@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 // components
 import JobsDetails from "../components/JobsDetails";
+import JobsForm from "../components/JobsForm";
 
 const Home = () => {
   const [jobs, setJobs] = useState(null);
@@ -24,6 +25,7 @@ const Home = () => {
       <div className="jobs">
         {jobs && jobs.map((job) => <JobsDetails key={job._id} job={job} />)}
       </div>
+      <JobsForm />
     </div>
   );
 };
