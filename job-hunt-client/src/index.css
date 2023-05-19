@@ -60,6 +60,17 @@ header a {
   justify-content: space-between;
 }
 
+.job-details-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.job-details-btns {
+  display: flex;
+  gap: 0.5em;
+}
+
 .job-details h4 {
   margin: 0 0 1em 0;
   font-size: 1.2em;

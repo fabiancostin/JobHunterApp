@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useJobsContext } from "../hooks/useJobsContext";
 
 // components
 import JobsDetails from "../components/JobsDetails";
 import JobsForm from "../components/JobsForm";
 
 const Home = () => {
-  const [jobs, setJobs] = useState(null);
+  const { jobs, dispatch } = useJobsContext();
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -13,7 +14,7 @@ const Home = () => {
       const json = await response.json();
 
       if (response.ok) {
-        setJobs(json);
+        dispatch({ type: "SET_JOBS", payload: json });
       }
     };
 
