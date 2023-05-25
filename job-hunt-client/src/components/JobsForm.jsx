@@ -8,6 +8,7 @@ const JobsForm = () => {
   const [company, setCompany] = useState("");
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,11 +26,13 @@ const JobsForm = () => {
 
     if (!response.ok) {
       setError(json.error);
+      setEmptyFields(json.emptyFields);
     } else {
       setTitle("");
       setCompany("");
       setStatus("");
       setError(null);
+      setEmptyFields([]);
       console.log("new job added", json);
       dispatch({ type: "CREATE_JOB", payload: json });
     }
@@ -44,6 +47,7 @@ const JobsForm = () => {
         type="text"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
+        className={emptyFields.includes("title") ? "error" : ""}
       />
 
       <label>Company Name:</label>
@@ -51,6 +55,7 @@ const JobsForm = () => {
         type="text"
         onChange={(e) => setCompany(e.target.value)}
         value={company}
+        className={emptyFields.includes("company") ? "error" : ""}
       />
 
       <label>Status:</label>
@@ -58,6 +63,7 @@ const JobsForm = () => {
         type="text"
         onChange={(e) => setStatus(e.target.value)}
         value={status}
+        className={emptyFields.includes("status") ? "error" : ""}
       />
 
       <button>Add Job</button>

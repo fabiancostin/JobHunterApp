@@ -1,5 +1,7 @@
 import { useJobsContext } from "../hooks/useJobsContext";
 
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+
 const JobsDetails = ({ job }) => {
   const { dispatch } = useJobsContext();
 
@@ -32,7 +34,11 @@ const JobsDetails = ({ job }) => {
               <strong>Status: </strong>
               {job.status}
             </p>
-            <p>{job.createdAt}</p>
+            <p>
+              {formatDistanceToNow(new Date(job.createdAt), {
+                addSuffix: true,
+              })}
+            </p>
           </div>
           <div className="job-details-btns">
             <button onClick={handleEdit}>edit</button>

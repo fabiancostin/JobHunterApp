@@ -71,6 +71,21 @@ header a {
   gap: 0.5em;
 }
 
+.job-details-btns button {
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  font-weight: 700;
+  background-color: var(--primary);
+  color: #fff;
+  transition: 0.3s;
+}
+
+.job-details-btns button:hover {
+  cursor: pointer;
+  background-color: #016bb7;
+}
+
 .job-details h4 {
   margin: 0 0 1em 0;
   font-size: 1.2em;
@@ -124,11 +139,15 @@ form h3 {
   margin-bottom: 1em;
 }
 
-.error {
+div .error {
   padding: 1em;
   background-color: var(--secondary);
   border: 1px solid var(--error);
   color: var(--error);
   margin: 1em 0;
   border-radius: 5px;
+}
+
+input .error {
+  border: 1px solid var(--error);
 }
